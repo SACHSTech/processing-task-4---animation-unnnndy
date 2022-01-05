@@ -3,11 +3,13 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 
+  //sun variables
   float circley = 500;
   float circlex = -100;
   float speedx = 1;
   float speedy = 1; 
 
+  //moon variables
   float moony = 500;
   float moonx = -100;
   float speedx2 = 1;
@@ -16,19 +18,11 @@ public class Sketch extends PApplet {
   //colour change speed reduction
   double speedSlow;
   double speedSlow2;
-  double speedSlow3;
-  double speedSlowGreen;
-  double speedSlowBlue;
 
   //for base colour
   float red = 210;
   float green = 230;
   float blue = 255;
-
-  //colour reset
-  float red2 = 210;
-  float green2 = 230;
-  float blue2 = 255;
 
   //loop king thing yes.
   float counter = 1;
@@ -47,20 +41,21 @@ public class Sketch extends PApplet {
     placeholder = (0.0025*(Math.pow(circlex,2)) + -(1*circlex) + 150);
     circley = (float)placeholder;
 
-  //sunriser maker thinger idk
-  background(red, green, blue);
+    //sunriser maker thinger idk
+    background(red, green, blue);
 
-  if(circlex<=100){
-    if(red>=135){
-      red = red - 1;
+    //sky blue
+    if(circlex<=100){
+      if(red>=135){
+        red = red - 1;
+      }
+      if(green>=206){
+        green = green - 1;
+      }
+      if(blue>=235){
+        blue = blue - 1; 
+      }
     }
-    if(green>=206){
-      green = green - 1;
-    }
-    if(blue>=235){
-      blue = blue - 1; 
-    }
-  }
 
     //darker sky till sunset - dark blue basically
     if(circlex>=100 && circlex<275){
@@ -104,18 +99,15 @@ public class Sketch extends PApplet {
         blue = blue - 2; 
       }
     }
-    //System.out.println(red + ", " + green + ", " + blue);
 
     //reset
     if(circlex == 525){
       counter++;
       circlex=-75;
       circley=500;
-      //red = red2;
-      //green = green2;
-      //blue = blue2;
     }
-    //hands down (sad cause its sunny, hes a snowman)
+
+    //hands, need to put in quad for colour change
     stroke(20,20,20);
     line(150,200,120,175);
     stroke(20,20,20);
@@ -144,7 +136,6 @@ public class Sketch extends PApplet {
         blue = blue + 3; 
       }
     }
-    System.out.println(moonx);
 
   if(moonx>1 && moonx<400){
     float randomLocationX = random(0,width);
@@ -197,17 +188,9 @@ public class Sketch extends PApplet {
     line(150,200,130,175);
     stroke(240,240,240);
     line(250,200,270,175);
-
-    /*(hands up, he's happy, colder in the night)
-    stroke(240,240,240);
-    line(150,200,130,175);
-    stroke(240,240,240);
-    line(250,200,270,175);
-    */
-
   }
 
-    //the drawing/shapes for everything that are used in the quad and that stay in the perm background
+    //the drawing/shapes that move, sun/moon
     stroke(255, 255, 255);
     fill(255, 255, 255);
     ellipse(moonx, moony, 50, 50);
@@ -239,6 +222,7 @@ public class Sketch extends PApplet {
       fill(145,145,145);
       ellipse(275,370,25,25);
     }
+
     if (circlex>=150 && circlex<250){
       stroke(145,145,145);
       fill(145,145,145);
@@ -252,6 +236,7 @@ public class Sketch extends PApplet {
       fill(145,145,145);
       ellipse(200,385,25,25);
     }
+
     if (circlex>=250 && circlex<450){
       stroke(145,145,145);
       fill(145,145,145);
@@ -281,7 +266,7 @@ public class Sketch extends PApplet {
   
     //snowman arms - in quad formula
 
-    // eyes
+    //eyes
     stroke(20,20,20);
     fill(50,50,50);
     ellipse(180,150,20,20);
@@ -290,7 +275,7 @@ public class Sketch extends PApplet {
     fill(50,50,60);
     ellipse(220,150,20,20);
   
-    //face parts
+    //other face parts
     stroke(20,20,20);
     line(195,175,205,175);
   
@@ -316,9 +301,6 @@ public class Sketch extends PApplet {
     stroke(50,50,50);
     fill(80,80,80);
     triangle(300,330,315,300,330,330);
-
-    //heres a tree, maybe, unless i got tired
-
   } 
 }
 
